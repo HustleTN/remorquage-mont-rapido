@@ -67,8 +67,7 @@ export default function MapPicker({ onLocationSelect }: MapPickerProps) {
       console.error('❌ MAP ERROR:', e);
       console.error('❌ Error details:', {
         error: e.error,
-        message: e.error?.message,
-        status: e.error?.status
+        message: e.error?.message
       });
     });
 
@@ -124,7 +123,7 @@ export default function MapPicker({ onLocationSelect }: MapPickerProps) {
       // Add geocoder AFTER map loads
       console.log('🔍 Creating geocoder...');
       const geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
+        accessToken: mapboxgl.accessToken || '',
         mapboxgl: mapboxgl as any,
         marker: false,
         placeholder: 'Rechercher une adresse...',
